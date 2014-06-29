@@ -45,7 +45,7 @@ else
  #permissions when copy a file to a ntfs partition...
  [ -f /tmp/ntfsmnterr${MYPID}.txt ] && rm -f /tmp/ntfsmnterr${MYPID}.txt
  
- ntfs-3g $CMDPRMS -o umask=0,no_def_opts,silent 2>/tmp/ntfsmnterr${MYPID}.txt #120103 shinobar: need silent
+ ntfs-3g $CMDPRMS -o umask=022,no_def_opts,silent 2>/tmp/ntfsmnterr${MYPID}.txt #120103 shinobar: need silent
  RETVAL=$?
  #v2.16 ntfs-3g v1.417, part. scheduled for check, failed with value 10...
  #v4.00 ntfs-3g v1.2412 does not have 4,10, has 15 for dirty f.s., 14 hiberneted...
@@ -55,7 +55,7 @@ else
    #RETVAL=$?
    echo > /dev/null
   else
-   ntfs-3g $CMDPRMS -o force,umask=0,no_def_opts,silent 2>/tmp/ntfsmnterr${MYPID}.txt #120103 shinobar: need silent.
+   ntfs-3g $CMDPRMS -o force,umask=022,no_def_opts,silent 2>/tmp/ntfsmnterr${MYPID}.txt #120103 shinobar: need silent.
    RETVAL=$?
    ERRMSG1="`cat /tmp/ntfsmnterr${MYPID}.txt`"
    echo "$ERRMSG1"
